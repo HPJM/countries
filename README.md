@@ -1,6 +1,30 @@
 # Countries
 
-**TODO: Add description**
+Useful functions for all ISO 3166-2 country codes and names in Elixir.
+
+[Data source](https://datahub.io/core/country-list)
+
+## Examples
+
+```elixir
+defmodule MyModule do
+  use Countries
+
+  def check_code(code) do
+    if valid_code?(code) do
+      {:ok, code}
+    else
+      {:error, {:invalid, code}}
+    end
+  end
+
+  def country_info(code) do
+    with {:ok, code} <- check_code(code) do
+      {:ok, code, from_code(code)}
+    end
+  end
+end
+```
 
 ## Installation
 
